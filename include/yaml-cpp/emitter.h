@@ -21,6 +21,9 @@
 #include "yaml-cpp/emittermanip.h"
 #include "yaml-cpp/null.h"
 #include "yaml-cpp/ostream_wrapper.h"
+#ifdef HAS_GLM
+#include <glm/vec2.hpp>
+#endif
 
 namespace YAML {
 class Binary;
@@ -276,6 +279,15 @@ inline Emitter& operator<<(Emitter& emitter, _Indent indent) {
 inline Emitter& operator<<(Emitter& emitter, _Precision precision) {
   return emitter.SetLocalPrecision(precision);
 }
+
+#ifdef HAS_GLM
+inline Emitter& operator<<(Emitter& emitter, const glm::vec2& v) {
+  emitter << Flow;
+  emitter << BeginSeq << v.x << v.y << EndSeq;
+  return emitter;
+}
+#endif
+
 }  // namespace YAML
 
 #endif  // EMITTER_H_62B23520_7C8E_11DE_8A39_0800200C9A66
