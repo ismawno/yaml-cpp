@@ -20,6 +20,7 @@ objdir("build/" .. outputdir)
 
 files {
    "src/**.cpp",
+   "src/**.h",
    "include/**.h"
 }
 
