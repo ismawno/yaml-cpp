@@ -1,3 +1,25 @@
 build/
 /tags
 /bazel-*
+
+# Binary files
+**/bin
+
+# Build folders
+**/build
+
+# Makefiles
+**/Makefile
+
+# MacOS artifacts
+.DS_Store
+
+# VS-VSCode config
+.vscode/
+.vs/
+
+# Project files
+*.xcworkspace/
+**.xcodeproj
+*.sln
+**.vcxproj*
