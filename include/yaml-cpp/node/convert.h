@@ -461,7 +461,7 @@ struct convert<glm::vec2> {
   }
 
   static bool decode(const Node& node, glm::vec2& v) {
-    if (!node.IsSequence() || node.size() != 3)
+    if (!node.IsSequence() || node.size() != 2)
       return false;
 
     v.x = node[0].as<float>();
