@@ -94,10 +94,14 @@ struct as_if {
   const Node& node;
 
   T operator()(const S& fallback) const {
+    T t;
+    return (*this)(fallback, t);
+  }
+
+  T& operator()(const S& fallback, T& t) {
     if (!node.m_pNode)
       return fallback;
 
-    T t;
     if (convert<T>::decode(node, t))
       return t;
     return fallback;
@@ -124,10 +128,14 @@ struct as_if<T, void> {
   const Node& node;
 
   T operator()() const {
+    T t;
+    return (*this)(t);
+  }
+
+  T& operator()(T& t) const {
     if (!node.m_pNode)
       throw TypedBadConversion<T>(node.Mark());
 
-    T t;
     if (convert<T>::decode(node, t))
       return t;
     throw TypedBadConversion<T>(node.Mark());
@@ -161,6 +169,20 @@ inline T Node::as(const S& fallback) const {
   if (!m_isValid)
     return fallback;
   return as_if<T, S>(*this)(fallback);
+}
+
+template <typename T>
+inline T& Node::as(T& t) const {
+  if (!m_isValid)
+    throw InvalidNode(m_invalidKey);
+  return as_if<T, void>(*this)(t);
+}
+
+template <typename T, typename S>
+inline T& Node::as(const S& fallback, T& t) const {
+  if (!m_isValid)
+    return fallback;
+  return as_if<T, S>(*this)(fallback, t);
 }
 
 inline const std::string& Node::Scalar() const {
@@ -315,9 +337,11 @@ inline void Node::push_back(const Node& rhs) {
   m_pMemory->merge(*rhs.m_pMemory);
 }
 
-template<typename Key>
+template <typename Key>
 std::string key_to_string(const Key& key) {
-  return streamable_to_string<Key, is_streamable<std::stringstream, Key>::value>().impl(key);
+  return streamable_to_string<Key,
+                              is_streamable<std::stringstream, Key>::value>()
+      .impl(key);
 }
 
 // indexing

@@ -66,6 +66,10 @@ class YAML_CPP_API Node {
   T as() const;
   template <typename T, typename S>
   T as(const S& fallback) const;
+  template <typename T>
+  T& as(T& t) const;
+  template <typename T, typename S>
+  T& as(const S& fallback, T& t) const;
   const std::string& Scalar() const;
 
   const std::string& Tag() const;
@@ -143,6 +147,6 @@ YAML_CPP_API Node Clone(const Node& node);
 
 template <typename T>
 struct convert;
-}
+}  // namespace YAML
 
 #endif  // NODE_NODE_H_62B23520_7C8E_11DE_8A39_0800200C9A66
