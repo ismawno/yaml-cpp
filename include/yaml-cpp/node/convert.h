@@ -457,6 +457,7 @@ struct convert<glm::vec2> {
     Node node;
     node.push_back(v.x);
     node.push_back(v.y);
+    node.SetStyle(EmitterStyle::Flow);
     return node;
   }
 
