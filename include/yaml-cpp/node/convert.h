@@ -25,7 +25,7 @@
 #include "yaml-cpp/node/type.h"
 #include "yaml-cpp/null.h"
 
-#ifdef HAS_GLM
+#ifdef YAML_CPP_GLM_COMPAT
 #include "glm/vec2.hpp"
 #include "glm/vec3.hpp"
 #include "glm/vec4.hpp"
@@ -452,7 +452,7 @@ struct convert<Binary> {
   }
 };
 
-#ifdef HAS_GLM
+#ifdef YAML_CPP_GLM_COMPAT
 template <>
 struct convert<glm::vec2> {
   static Node encode(const glm::vec2& v) {

@@ -21,7 +21,7 @@
 #include "yaml-cpp/emittermanip.h"
 #include "yaml-cpp/null.h"
 #include "yaml-cpp/ostream_wrapper.h"
-#ifdef HAS_GLM
+#ifdef YAML_CPP_GLM_COMPAT
 #include <glm/vec2.hpp>
 #endif
 
@@ -280,7 +280,7 @@ inline Emitter& operator<<(Emitter& emitter, _Precision precision) {
   return emitter.SetLocalPrecision(precision);
 }
 
-#ifdef HAS_GLM
+#ifdef YAML_CPP_GLM_COMPAT
 inline Emitter& operator<<(Emitter& emitter, const glm::vec2& v) {
   emitter << Flow;
   emitter << BeginSeq << v.x << v.y << EndSeq;
