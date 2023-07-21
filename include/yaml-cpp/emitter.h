@@ -22,7 +22,9 @@
 #include "yaml-cpp/null.h"
 #include "yaml-cpp/ostream_wrapper.h"
 #ifdef YAML_CPP_GLM_COMPAT
-#include <glm/vec2.hpp>
+#include "glm/vec2.hpp"
+#include "glm/vec3.hpp"
+#include "glm/vec4.hpp"
 #endif
 
 namespace YAML {
@@ -284,6 +286,16 @@ inline Emitter& operator<<(Emitter& emitter, _Precision precision) {
 inline Emitter& operator<<(Emitter& emitter, const glm::vec2& v) {
   emitter << Flow;
   emitter << BeginSeq << v.x << v.y << EndSeq;
+  return emitter;
+}
+inline Emitter& operator<<(Emitter& emitter, const glm::vec3& v) {
+  emitter << Flow;
+  emitter << BeginSeq << v.x << v.y << v.z << EndSeq;
+  return emitter;
+}
+inline Emitter& operator<<(Emitter& emitter, const glm::vec4& v) {
+  emitter << Flow;
+  emitter << BeginSeq << v.x << v.y << v.z << v.w << EndSeq;
   return emitter;
 }
 #endif
