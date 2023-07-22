@@ -164,12 +164,12 @@ inline T Node::as() const {
   return as_if<T, void>(*this)();
 }
 
-template <typename T, typename S>
-inline T Node::as(const S& fallback) const {
-  if (!m_isValid)
-    return fallback;
-  return as_if<T, S>(*this)(fallback);
-}
+// template <typename T, typename S>
+// inline T Node::as(const S& fallback) const {
+//   if (!m_isValid)
+//     return fallback;
+//   return as_if<T, S>(*this)(fallback);
+// }
 
 template <typename T>
 inline T& Node::as(T& t) const {
@@ -178,12 +178,12 @@ inline T& Node::as(T& t) const {
   return as_if<T, void>(*this)(t);
 }
 
-template <typename T, typename S>
-inline T& Node::as(const S& fallback, T& t) const {
-  if (!m_isValid)
-    return fallback;
-  return as_if<T, S>(*this)(fallback, t);
-}
+// template <typename T, typename S>
+// inline T& Node::as(const S& fallback, T& t) const {
+//   if (!m_isValid)
+//     return fallback;
+//   return as_if<T, S>(*this)(fallback, t);
+// }
 
 inline const std::string& Node::Scalar() const {
   if (!m_isValid)
