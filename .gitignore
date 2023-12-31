@@ -19,6 +19,8 @@ build/
 .vs/
 
 # Project files
+*.idb
+*.pdb
 *.xcworkspace/
 **.xcodeproj
 *.sln
