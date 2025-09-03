@@ -19,10 +19,13 @@ namespace YAML {
 #if defined(__cpp_exceptions) || (defined(_MSC_VER) && defined(_CPPUNWIND))
 template <typename Ex, typename... Args>
 YAML_CPP_NORETURN void YAML_throw(Args&&... args) {
-  YAML_throw<Ex>(std::forward<Args>(args)...);
+  throw Ex(std::forward<Args>(args)...);
 }
 #else
-YAML_CPP_NORETURN void handle_exception(const char* what);
+YAML_CPP_NORETURN void handle_exception(const char* what) {
+  std::cerr << what;
+  std::terminate();
+}
 
 template <typename Ex, typename... Args>
 YAML_CPP_NORETURN void YAML_throw(Args&&... args) {
