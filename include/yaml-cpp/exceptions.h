@@ -23,7 +23,7 @@ YAML_CPP_NO_RETURN void YAML_throw(Args&&... args) {
   throw Ex(std::forward<Args>(args)...);
 }
 #else
-YAML_CPP_NO_RETURN void handle_exception(const char* what) {
+YAML_CPP_NO_RETURN inline void handle_exception(const char* what) {
   std::cerr << what;
   std::terminate();
 }
