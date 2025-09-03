@@ -58,11 +58,11 @@
 #define YAML_CPP_DEPRECATED_NO_EXPORT YAML_CPP_NO_EXPORT YAML_CPP_DEPRECATED
 #endif
 
-#ifndef YAML_CPP_NORETURN
+#ifndef YAML_CPP_NO_RETURN
 #ifdef _MSC_VER
-#define YAML_CPP_NORETURN __declspec(noreturn)
+#define YAML_CPP_NO_RETURN __declspec(noreturn)
 #else
-#define YAML_CPP_NORETURN __attribute__((noreturn))
+#define YAML_CPP_NO_RETURN __attribute__((noreturn))
 #endif
 #endif
 
