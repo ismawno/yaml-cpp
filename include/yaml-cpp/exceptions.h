@@ -10,6 +10,7 @@
 #include "yaml-cpp/mark.h"
 #include "yaml-cpp/noexcept.h"
 #include "yaml-cpp/traits.h"
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <string>
