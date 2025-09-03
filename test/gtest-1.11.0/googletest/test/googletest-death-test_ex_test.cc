@@ -64,10 +64,10 @@ class TestException : public std::exception {
 
 TEST(CxxExceptionDeathTest, PrintsMessageForStdExceptions) {
   // Verifies that the exception message is quoted in the failure text.
-  EXPECT_NONFATAL_FAILURE(EXPECT_DEATH(throw TestException(), ""),
+  EXPECT_NONFATAL_FAILURE(EXPECT_DEATH(YAML_throw<TestException>(), ""),
                           "exceptional message");
   // Verifies that the location is mentioned in the failure text.
-  EXPECT_NONFATAL_FAILURE(EXPECT_DEATH(throw TestException(), ""),
+  EXPECT_NONFATAL_FAILURE(EXPECT_DEATH(YAML_throw<TestException>(), ""),
                           __FILE__);
 }
 # endif  // GTEST_HAS_EXCEPTIONS

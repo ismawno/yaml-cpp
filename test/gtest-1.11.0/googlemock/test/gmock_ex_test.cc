@@ -59,7 +59,7 @@ TEST(DefaultValueTest, ThrowsRuntimeErrorWhenNoDefaultValue) {
     // No expectation is set on this method, so Google Mock must
     // return the default value.  However, since Google Mock knows
     // nothing about the return type, it doesn't know what to return,
-    // and has to throw (when exceptions are enabled) or abort
+    // and has to YAML_throw<>(when exceptions are enabled) or abort
     // (otherwise).
     mock.GetNonDefaultConstructible();
     FAIL() << "GetNonDefaultConstructible()'s return type has no default "

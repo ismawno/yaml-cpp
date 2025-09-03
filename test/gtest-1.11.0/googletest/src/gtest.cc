@@ -6242,7 +6242,7 @@ bool AlwaysTrue() {
   // This condition is always false so AlwaysTrue() never actually throws,
   // but it makes the compiler think that it may throw.
   if (IsTrue(false))
-    throw ClassUniqueToAlwaysTrue();
+    YAML_throw<ClassUniqueToAlwaysTrue>();
 #endif  // GTEST_HAS_EXCEPTIONS
   return true;
 }
