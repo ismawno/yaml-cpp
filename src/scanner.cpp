@@ -280,7 +280,8 @@ Token::TYPE Scanner::GetStartTokenFor(IndentMarker::INDENT_TYPE type) const {
       break;
   }
   assert(false);
-  throw std::runtime_error("yaml-cpp: internal error, invalid indent type");
+  // throw std::runtime_error("yaml-cpp: internal error, invalid indent type");
+  return "yaml-cpp: internal error, invalid indent type"
 }
 
 Scanner::IndentMarker* Scanner::PushIndentTo(int column,
